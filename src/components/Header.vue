@@ -7,7 +7,12 @@
         </a>
       </div>
       <ul class="menu-links">
-        <li v-for="item in itemsAuth" :key="item">
+        <li v-for="item in menuItems" :key="item">
+          <a href="/">{{item}}</a>
+        </li>
+      </ul>
+      <ul class="auth-links">
+        <li v-for="item in menuAuth" :key="item">
           <a href="/">{{item}}</a>
         </li>
       </ul>
@@ -17,12 +22,10 @@
 
 <script>
 export default {
-  data () {
-    return {
-      itemsAuth: ['Trainings', 'Exercices', 'Profile', 'Logout'],
-      itemsNotAuth: ['Login', 'Register']
-    }
-  }
+  props: [
+    'menuItems',
+    'menuAuth'
+  ]
 }
 </script>
 
@@ -36,6 +39,8 @@ export default {
       display: flex;
       margin: 0 auto;
       max-width: 1170px;
+      display: flex;
+      justify-content: space-between;
     }
 
     .logo {
@@ -44,7 +49,7 @@ export default {
       }
     }
 
-    .menu-links {
+    .menu-links, .auth-links {
       margin: 0 auto;
       padding: 0;
       display: flex;
@@ -56,6 +61,9 @@ export default {
           margin-right: 24px;
         }
       }
+    }
+    .auth-links {
+      margin: 0;
     }
   }
 

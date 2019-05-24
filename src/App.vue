@@ -1,24 +1,32 @@
 <template>
   <div id="app">
-    <Header/>
-    <h1>{{title}}</h1>
+    <Header :menuItems="menuItems" :menuAuth="menuAuth" />
+    <Exercises />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Exercises from './components/Exercises.vue'
 
 export default {
   name: 'app',
   components: {
-    Header
+    Header,
+    Exercises
   },
   data () {
     return {
-      title: 'Your first Vue file, wooo!'
+      title: 'Your first Vue file, wooo!',
+      menuItems: ['Trainings', 'Exercices', 'Profile', 'Logout']
     }
   },
   methods: {
+  },
+  computed: {
+    menuAuth: function () {
+      return ['Login', 'Register']
+    }
   }
 }
 </script>
