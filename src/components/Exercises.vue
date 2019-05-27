@@ -1,10 +1,17 @@
 <template>
   <div class="container">
-    <ul class="card-list">
+    <h1>Exercises</h1>
+    <div class="filters"></div>
+    <ul class="cards-list">
       <li v-for="item in items" :key="item.name" >
           <div class="card">
             <p>{{item.name}}</p>
-            <img :src="`../assets/${item.picture}.jpg`" :alt="item.name">
+            <img :src="imagePath(item.picture)" :alt="item.name">
+            <p>{{item.description}}</p>
+            <div class="body-parts">
+              <span v-for="part in item.bodyParts" :key="part.index">{{part}}</span>
+            </div>
+            <span>{{item.expensiveness}}</span>
           </div>
       </li>
     </ul>
@@ -18,25 +25,70 @@ export default {
       items: [
         {
           name: 'Squats',
-          picture: 'asd7687dfaj',
-          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone. And on the outside, the silky, soft-touch finish of the silicone exterior feels great in your hand.'
+          picture: 'asd',
+          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone.',
+          bodyParts: ['quads', 'hamstrings', 'calves'],
+          expensiveness: 2
         },
         {
           name: 'Lift',
-          picture: 'asd7687dfaj',
-          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone. And on the outside, the silky, soft-touch finish of the silicone exterior feels great in your hand.'
+          picture: 'abd',
+          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone.',
+          bodyParts: ['latissimus', 'hamstrings', 'rectus'],
+          expensiveness: 2
         },
         {
           name: 'Bench',
-          picture: 'asd7687dfaj',
-          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone. And on the outside, the silky, soft-touch finish of the silicone exterior feels great in your hand.'
+          picture: 'abc',
+          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone.',
+          bodyParts: ['front delt', 'breast', 'triceps'],
+          expensiveness: 1.5
+        },
+        {
+          name: 'Biceps lift',
+          picture: 'abc',
+          description: 'Engineered for iPhone XS, the Smart Battery Case gives you even longer battery life while offering great protection. Inside, a soft microfiber lining helps protect your iPhone.',
+          bodyParts: ['biceps', 'forearms', 'brachialis'],
+          expensiveness: 1
         }
       ]
+    }
+  },
+  methods: {
+    imagePath: function (imgName) {
+      const url = require(`@/assets/img/${imgName}.png`)
+      return url
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .container {
+    width: 1170px;
+    margin: 0 auto;
+  }
 
+  .cards-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,.12);
+      padding: 20px;
+      margin: 10px;
+      max-width: 316px;
+      border-radius: 6px;
+
+      img {
+        height: 240px;
+      }
+    }
+  }
 </style>
