@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header :menuItems="menuItems" :menuAuth="menuAuth" />
-    <Exercises />
+    <Exercises :title="title" @changeTitle="updateTitle($event)" />
   </div>
 </template>
 
@@ -22,6 +22,9 @@ export default {
     }
   },
   methods: {
+    updateTitle: function (updatedTitle) {
+      this.title = updatedTitle
+    }
   },
   computed: {
     menuAuth: function () {

@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <h1>Exercises</h1>
-    <div class="filters"></div>
+    <h2>{{title}}</h2>
+    <div class="filters">
+      <button @click="changeTitle">Change</button>
+    </div>
     <ul class="cards-list">
       <li v-for="item in items" :key="item.name" >
           <div class="card">
@@ -54,10 +57,16 @@ export default {
       ]
     }
   },
+  props: [
+    'title'
+  ],
   methods: {
     imagePath: function (imgName) {
       const url = require(`@/assets/img/${imgName}.png`)
       return url
+    },
+    changeTitle: function () {
+      this.$emit('changeTitle', 'Oh yeah!')
     }
   }
 }
