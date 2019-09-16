@@ -1,0 +1,10 @@
+<template>
+  <div>
+    <h1>Ooops! Something went wrong...</h1>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>

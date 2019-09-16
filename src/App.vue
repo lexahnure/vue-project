@@ -1,24 +1,22 @@
 <template>
   <div id="app">
     <Header :menuItems="menuItems" :menuAuth="menuAuth" />
-    <Exercises :title="title" @changeTitle="updateTitle($event)" />
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Exercises from './components/Exercises.vue'
 
 export default {
   name: 'app',
   components: {
-    Header,
-    Exercises
+    Header
   },
   data () {
     return {
       title: 'Your first Vue file, wooo!',
-      menuItems: ['Trainings', 'Exercices', 'Profile', 'Logout']
+      menuItems: ['Trainings', 'Exercises', 'Profile', 'Logout']
     }
   },
   methods: {

@@ -6,9 +6,10 @@
           <img src="../assets/logo.png" alt="logo">
         </a>
       </div>
+      <span>{{title}}</span>
       <ul class="menu-links">
         <li v-for="item in menuItems" :key="item">
-          <a href="/">{{item}}</a>
+          <router-link :to="`/${item.toLowerCase()}`">{{item}}</router-link>
         </li>
       </ul>
       <ul class="auth-links">
@@ -21,11 +22,20 @@
 </template>
 
 <script>
+import { bus } from '../main'
+
 export default {
   props: [
     'menuItems',
-    'menuAuth'
-  ]
+    'menuAuth',
+    'title'
+  ],
+
+  created () {
+    bus.$on('titleChange', (data) => {
+      this.title = data
+    })
+  }
 }
 </script>
 
