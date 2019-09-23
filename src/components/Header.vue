@@ -14,7 +14,7 @@
       </ul>
       <ul class="auth-links">
         <li v-for="item in menuAuth" :key="item">
-          <a href="/">{{item}}</a>
+          <router-link :to="`/${item.toLowerCase()}`">{{item}}</router-link>
         </li>
       </ul>
     </div>
