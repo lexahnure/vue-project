@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <h3>Register</h3>
+    <h3>Login</h3>
     <form>
       <div class="input-field">
         <label for="email">Email</label>
@@ -19,7 +19,7 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'register',
+  name: 'login',
   data () {
     return {
       email: '',
@@ -27,12 +27,6 @@ export default {
     }
   },
   methods: {
-    register: function (e) {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-        .then(usr => console.log(usr.user.email))
-        .catch(err => console.log(`Error - ${err.errorMessage}`))
-      e.preventDefault()
-    }
   }
 }
 </script>
