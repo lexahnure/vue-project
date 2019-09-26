@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       title: 'Your first Vue file, wooo!',
-      menuItems: ['Trainings', 'Exercises', 'Profile', 'Logout']
+      menuItems: ['Trainings', 'Exercises', 'Profile']
     }
   },
   methods: {
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     menuAuth: function () {
-      return ['Login', 'Register']
+      return ['Login', 'Register', 'Logout']
     }
   }
 }

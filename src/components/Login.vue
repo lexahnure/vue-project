@@ -10,7 +10,7 @@
         <label for="password">Password</label>
         <input id="password" v-model="password" type="password" required>
       </div>
-      <input class="btn" type="button" @click="register" value="Register">
+      <input class="btn" type="button" @click="login" value="Register">
     </form>
   </div>
 </template>
@@ -19,7 +19,7 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'login',
+  name: 'register',
   data () {
     return {
       email: '',
@@ -27,6 +27,12 @@ export default {
     }
   },
   methods: {
+    login: function (e) {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        .then(usr => console.log(`You are logged in as ${usr.user.email}`))
+        .catch(err => console.log(`Error - ${err.errorMessage}`))
+      e.preventDefault()
+    }
   }
 }
 </script>

@@ -13,8 +13,14 @@
         </li>
       </ul>
       <ul class="auth-links">
-        <li v-for="item in menuAuth" :key="item">
-          <router-link :to="`/${item.toLowerCase()}`">{{item}}</router-link>
+        <li>
+          <router-link :to="`/login`">Login</router-link>
+        </li>
+        <li>
+          <router-link :to="`/register`">Register</router-link>
+        </li>
+        <li>
+          <input type="button" @click="logout" value="Logout"/>
         </li>
       </ul>
     </div>
@@ -23,18 +29,32 @@
 
 <script>
 import { bus } from '../main'
+import firebase from 'firebase'
 
 export default {
+  name: 'navbar',
   props: [
     'menuItems',
     'menuAuth',
     'title'
   ],
-
+  data () {
+    return {
+      isLoggedIn: false,
+      currentUser: false
+    }
+  },
   created () {
     bus.$on('titleChange', (data) => {
       this.title = data
     })
+  },
+  methods: {
+    logout: function () {
+      firebase.auth().signOut().then(() => {
+        this.$router.push('/login')
+      })
+    }
   }
 }
 </script>
