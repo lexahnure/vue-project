@@ -29,7 +29,7 @@ export default {
   methods: {
     login: function (e) {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then(usr => console.log(`You are logged in as ${usr.user.email}`))
+        .then(usr => this.$store.dispatch('login', usr.user))
         .catch(err => console.log(`Error - ${err.errorMessage}`))
       e.preventDefault()
     }

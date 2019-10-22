@@ -51,9 +51,9 @@ export default {
   },
   methods: {
     logout: function () {
-      firebase.auth().signOut().then(() => {
-        this.$router.push('/login')
-      })
+      firebase.auth().signOut()
+        .then(() => this.$store.dispatch('logout'))
+        .then(() => this.$router.push('/login'))
     }
   }
 }
